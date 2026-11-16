@@ -583,6 +583,22 @@ bool PointerCoords::operator==(const PointerCoords& other) const {
 
 void MotionEvent::initialize(int32_t id, DeviceId deviceId, uint32_t source,
                              ui::LogicalDisplayId displayId, std::array<uint8_t, 32> hmac,
+                             int32_t action, int32_t actionButton, int32_t flags,
+                             int32_t edgeFlags, int32_t metaState, int32_t buttonState,
+                             MotionClassification classification, const ui::Transform& transform,
+                             float xPrecision, float yPrecision, float rawXCursorPosition,
+                             float rawYCursorPosition, const ui::Transform& rawTransform,
+                             nsecs_t downTime, nsecs_t eventTime, size_t pointerCount,
+                             const PointerProperties* pointerProperties,
+                             const PointerCoords* pointerCoords) {
+    initialize(id, deviceId, source, displayId, hmac, action, actionButton,
+               static_cast<MotionFlag>(flags), edgeFlags, metaState, buttonState, classification,
+               transform, xPrecision, yPrecision, rawXCursorPosition, rawYCursorPosition,
+               rawTransform, downTime, eventTime, pointerCount, pointerProperties, pointerCoords);
+}
+
+void MotionEvent::initialize(int32_t id, DeviceId deviceId, uint32_t source,
+                             ui::LogicalDisplayId displayId, std::array<uint8_t, 32> hmac,
                              int32_t action, int32_t actionButton, ftl::Flags<MotionFlag> flags,
                              int32_t edgeFlags, int32_t metaState, int32_t buttonState,
                              MotionClassification classification, const ui::Transform& transform,
